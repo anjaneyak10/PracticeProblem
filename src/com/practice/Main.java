@@ -1,6 +1,7 @@
-package com.practice;
+package com.jetbrains;
 import java.util.Scanner;
-public class BinarySearch{
+public class Main{
+
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -8,12 +9,25 @@ public class BinarySearch{
         System.out.println("Enter the length of array");
         int l=input.nextInt();
         System.out.println("Enter the array");
-        int temp;
+
         for (int i=0;i<l;i++)
         {
             ar[i]=input.nextInt();
 
         }
+        Main ob = new Main();
+        ob.sort(ar,l);
+        System.out.println("Enter a number you want to find");
+        int y=input.nextInt();
+        Main op = new Main();
+        op.BinarySearch(ar,l,y);
+
+
+
+    }
+    public void sort(int ar[],int l)
+    {
+        int temp;
         for (int i=0;i<l-1;i++)
         {
             for (int j=i+1;j<l;j++)
@@ -28,8 +42,9 @@ public class BinarySearch{
             }
 
         }
-
-        int y  =1;
+    }
+    public void BinarySearch(int ar[],int l , int y)
+    {
         int f= 0;
 
         int m;
@@ -37,14 +52,14 @@ public class BinarySearch{
         while(f<l)
         {
             m=(f+l)/2;
-            System.out.println(ar[m]);
+            System.out.println(f +","+l);
             if(ar[m]<y)
             {
-                f=m;
+                f=m+1;
             }
             if(ar[m]>y)
             {
-                l=m;
+                l=m-1;
             }
             if(ar[m]==y)
             {
@@ -55,6 +70,5 @@ public class BinarySearch{
         }
         if(found==0)
             System.out.println("not found");
-
     }
 }
