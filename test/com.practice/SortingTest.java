@@ -3,6 +3,8 @@ package com.practice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static com.practice.Sorting.*;
 
 
@@ -31,21 +33,23 @@ public class SortingTest {
 
     }
 
-
+    // This test passes fully good job
     @Test
     public void testSort(){
         int[] emptyArray = {};
-        Assertions.assertTrue(isSorted(sort(emptyArray)));
+
+        Assertions.assertTrue(Arrays.equals(sort(emptyArray), TestUtil.sorted(emptyArray)));
+
 
         int[] array1 = {1};
-        Assertions.assertTrue(isSorted(sort(array1)));
+        Assertions.assertTrue(Arrays.equals(sort(array1), TestUtil.sorted(array1)));
 
         int[] array2 = {1,2};
-        Assertions.assertTrue(isSorted(sort(array2)));
+        Assertions.assertTrue(Arrays.equals(sort(array2), TestUtil.sorted(array2)));
 
         // Assuming the sort is akways ascending
         int[] array2_ = {2,1};
-        Assertions.assertTrue(isSorted(sort(array2)));
+        Assertions.assertTrue(Arrays.equals(sort(array2_), TestUtil.sorted(array2_)));
 
         // Some fun testing
 
@@ -54,7 +58,8 @@ public class SortingTest {
         int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
 
         for (int len : randomArrayLengths){
-            Assertions.assertTrue(isSorted(sort(TestUtil.createRandomArray(len))));
+            int[] arr = TestUtil.createRandomArray(len);
+            Assertions.assertTrue(Arrays.equals(sort(arr), TestUtil.sorted(arr)));
         }
     }
 
