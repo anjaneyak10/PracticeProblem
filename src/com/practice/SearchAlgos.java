@@ -21,14 +21,15 @@ public class SearchAlgos {
     public static boolean binarySearch(int[] ar, int y) {
         if (ar == null || ar.length == 0)
             return false;
-
+        System.out.println(ar[1]);
         int f = 0;
         int l = ar.length;
 
         if(!com.practice.Sorting.isSorted(ar))
-            ar = com.practice.Sorting.mergeSort(ar,0,l);
+            ar = com.practice.Sorting.sort(ar);
+        System.out.println("ar");
 
-        while (f < l) {
+        while (f <l) {
             int m = (f + l) / 2;
             if (ar[m] == y)
                 return true;

@@ -13,9 +13,10 @@ public class IOUtil {
 
     public static int[] getInputArray(){
         Scanner scanner = new Scanner(System.in);
-        int[] ar = new int[100];
+
         System.out.println("Enter the length of array");
         int l = scanner.nextInt();
+        int[] ar = new int[l];
         System.out.println("Enter the array");
         for (int i = 0; i < l; i++) {
             ar[i] = scanner.nextInt();

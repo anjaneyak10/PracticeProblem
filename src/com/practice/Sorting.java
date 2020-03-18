@@ -18,64 +18,89 @@ public class Sorting {
     }
 
     public static boolean isSorted(int ar[]) {
-        boolean isAscending = ar[0] < ar[ar.length-1];
-        for (int i = 0; i < ar.length - 2; i++) {
-            if (isAscending) {
-                if (ar[i] < ar[i + 1]) {
-                    continue;
-                } else return false;
-            }
-            else {
-                if (ar[i] > ar[i + 1]) {
-                    continue;
+        if (ar.length > 1) {
 
-                } else return false;
+            boolean isAscending = (ar[0] <= ar[(ar.length)-1]);
+
+            for (int i = 0; i < ar.length - 1; i++) {
+
+                if (isAscending) {
+
+                    if (ar[i] > ar[i + 1]) {
+                        return(false);
+                    }
+
+                }
+                else {
+
+
+                    if (ar[i] < ar[i + 1]) {
+                        return(false);
+                    }
+
+                }
+
             }
-       }
-        return true;
+        }
+            return true;
+
     }
-    public static int[] mergeSort(int ar[],int f,int l) {
-        int [] temp= new int[l];
-        while (f < l) {
+    public static int[] mergeSort (int ar[]) {
 
-            int m = f + l / 2;
+        if (ar.length<2)
+            return ar;
+//        for (int i=0;i<ar.length;i++)
+//            System.out.println(ar[i]);
+        System.out.println();
+        mergeSort(ar,0,ar.length-1);
+//        for (int i=0;i<ar.length;i++)
+//        System.out.println(ar[i]);
+        return ar;
+    }
+    private static void mergeSort(int ar[],int f,int l) {
+        if(f < l) {
+
+            int m = (f + l -1)/ 2;
             mergeSort(ar, f, m);
             mergeSort(ar, m + 1, l);
-            temp =merge(f, m, l, ar);
+            merge(f, m, l, ar);
+
 
         }
-        return temp;
+
+
     }
-    public static int[] merge (int f,int m ,int l ,int ar[]){
+    private static void merge(int f,int m ,int l ,int ar[]){
 
 
-            int [] temp = new int[ar.length];
+
             int left=m-f+1;
             int right=l-m;
             int [] leftar =new int[left];
             int [] rightar= new int[right];
             for (int i =0;i<left;i++)
                 leftar[i]=ar[f+i];
-            for (int i =0;i<left;i++)
-                leftar[i]=ar[m+1+i];
+            for (int i =0;i<right;i++)
+                rightar[i]=ar[m+1+i];
             int i=0;
             int j=0;
-            int k=0;
+            int k=f;
 
 
             while(i<left&&j<right){
 
 
                 if(leftar[i]<rightar[j])
-                    temp[k++]=leftar[i++];
+                    ar[k++]=leftar[i++];
                 else
-                    temp[k++]=rightar[j++];
+                    ar[k++]=rightar[j++];
             }
             while(i<left)
-                temp[k++]=leftar[i++];
+                ar[k++]=leftar[i++];
             while(j<right)
-                temp[k++]=rightar[j++];
-            return temp;
+                ar[k++]=rightar[j++];
+
+
 
 
     }

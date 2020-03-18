@@ -11,44 +11,44 @@ import static com.practice.Sorting.*;
 public class SortingTest {
 
     @Test
-    public void testIsSorted(){
+    public void testIsSorted() {
 
         // Failing test
         int[] emptyArray = {};
         Assertions.assertTrue(isSorted(emptyArray));
 
-        int[] array2 = {1,2};
+        int[] array2 = {1, 2};
         Assertions.assertTrue(isSorted(array2));
 
         // Failing test
-        int[] array2Rev = {2,1};
+        int[] array2Rev = {2, 1};
         Assertions.assertTrue(isSorted(array2Rev));
 
-        int[] array3Sorted = {1,2,3};
+        int[] array3Sorted = {1, 2, 3};
         Assertions.assertTrue(isSorted(array3Sorted));
 
         // Failing test
-        int[] array3NotSorted = {1,3,2};
+        int[] array3NotSorted = {1, 3, 2};
         Assertions.assertFalse(isSorted(array3NotSorted));
 
     }
 
     // This test passes fully good job
     @Test
-    public void testSort(){
+    public void testSort() {
         int[] emptyArray = {};
 
-        Assertions.assertTrue(Arrays.equals(sort(emptyArray), TestUtil.sorted(emptyArray)));
+        Assertions.assertTrue(Arrays.equals(sort(emptyArray), com.practice.TestUtil.sorted(emptyArray)));
 
 
         int[] array1 = {1};
         Assertions.assertTrue(Arrays.equals(sort(array1), TestUtil.sorted(array1)));
 
-        int[] array2 = {1,2};
+        int[] array2 = {1, 2};
         Assertions.assertTrue(Arrays.equals(sort(array2), TestUtil.sorted(array2)));
 
         // Assuming the sort is akways ascending
-        int[] array2_ = {2,1};
+        int[] array2_ = {2, 1};
         Assertions.assertTrue(Arrays.equals(sort(array2_), TestUtil.sorted(array2_)));
 
         // Some fun testing
@@ -57,37 +57,60 @@ public class SortingTest {
 
         int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
 
-        for (int len : randomArrayLengths){
+        for (int len : randomArrayLengths) {
             int[] arr = TestUtil.createRandomArray(len);
-            Assertions.assertTrue(Arrays.equals(sort(arr), TestUtil.sorted(arr)));
+            System.out.println(arr);
+
+            Assertions.assertTrue(isSorted(sort(arr)));
         }
     }
 
-//    @Test
-//    public void testMergeSort(){
-//        int[] emptyArray = {};
-//        Assertions.assertTrue(isSorted(mergeSort(emptyArray)));
+    @Test
+    public void testMergeSort() {
+        int[] emptyArray = {};
+        Assertions.assertTrue(isSorted(mergeSort(emptyArray)));
 //
-//        int[] array1 = {1};
-//        Assertions.assertTrue(isSorted(mergeSort(array1)));
-//
-//        int[] array2 = {1,2};
-//        Assertions.assertTrue(isSorted(mergeSort(array2)));
-//
-//        // Assuming the sort is akways ascending
-//        int[] array2_ = {2,1};
-//        Assertions.assertTrue(isSorted(mergeSort(array2)));
-//
-//        // Some fun testing
-//
-//        int randomTests = 5;
-//
-//        int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
-//
-//        for (int len : randomArrayLengths){
-//            Assertions.assertTrue(isSorted(mergeSort(TestUtil.createRandomArray(len))));
-//        }
-//    }
+        int[] array1 = {1};
+        Assertions.assertTrue(isSorted(mergeSort(array1)));
+
+        int[] array2 = {1, 2};
+        Assertions.assertTrue(isSorted(mergeSort(array2)));
+
+        //Assuming the sort is akways ascending
+        int[] array2_ = {2,1,5,6,7,4,3,5,7};
+        Assertions.assertTrue(isSorted(mergeSort(array2_)));
+
+        // Some fun testing
+
+        int randomTests = 5;
+
+        int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
+
+        for (int len : randomArrayLengths) {
+            int[] randomArray = TestUtil.createRandomArray(len);
+            for (int i=0;i<randomArray.length;i++)
+                System.out.println(randomArray[i]);
+            Assertions.assertTrue(isSorted(mergeSort(randomArray)));
+
+            }
+        //}
 
 
-}
+
+    }
+    @Test
+    public void testBinarySearch () {
+        int randomTests = 2;
+
+        int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
+        int[] searchIn = TestUtil.createRandomArray(randomArrayLengths[0]);
+        int searchWhat = searchIn[TestUtil.getRandomInt(randomArrayLengths[0])];
+        //Arrays.stream(searchIn).forEach(x -> System.out.print(x +" ,"));
+        Assertions.assertTrue(SearchAlgos.binarySearch(searchIn,searchWhat));
+
+
+
+
+    }
+
+    }
