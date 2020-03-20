@@ -94,6 +94,7 @@ public class Sorting {
     public static int[] quicksort(int []ar ) {
         if (ar.length<2)
             return ar;
+        System.out.println("l="+ar.length);
         quicksort(ar,0,ar.length-1);
         for(int i=0;i<ar.length;i++)
             System.out.println(ar[i]);
@@ -101,9 +102,8 @@ public class Sorting {
     }
 
     private static void quicksort(int[]ar,int l,int r){
-        int j;
         if(l<r) {
-            j=partition(ar,l,r);
+            int j=partition(ar,l,r);
             quicksort(ar,l,j-1);
             quicksort(ar,j+1,r);
         }
@@ -111,16 +111,18 @@ public class Sorting {
 
 
     private static int partition(int[]ar,int l ,int r) {
-        int j=l;
-        int i=l;
-        for(int k=l+1;k<r;k++){
-            if(ar[j]>=ar[k]){
-                int temp = ar[j];
-                ar[j]=ar[k];
+        int p=l-1;
+        for(int k=l;k<r;k++){
+            if(ar[k]<ar[r]){
+                p++;
+                int temp = ar[p];
+                ar[p]=ar[k];
                 ar[k]=temp;
-                j++;
             }
         }
-        return j;
+        int temp= ar[r];
+        ar[r]=ar[p+1];
+        ar[p+1]=temp;
+        return p+1;
     }
 }

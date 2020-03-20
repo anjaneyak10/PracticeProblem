@@ -103,18 +103,21 @@ public class SortingTest {
         Assertions.assertTrue(isSorted(quicksort(array2)));
 
         //Assuming the sort is akways ascending
-        int[] array2_ = {2, 1, 5, 6, 7, 4, 3, 5, 7};
+        int[] array2_ = {2, 1, 5, 6, 7, 4, 3, 5,7 };
         Assertions.assertTrue(isSorted(quicksort(array2_)));
 
         // Some fun testing
-
+        System.out.println();
+        System.out.println();
         int randomTests = 5;
         int[] randomArrayLengths = TestUtil.createRandomArray(randomTests);
         for (int len : randomArrayLengths) {
             int[] randomArray = TestUtil.createRandomArray(len);
             for (int i = 0; i < randomArray.length; i++)
                 System.out.println(randomArray[i]);
-            Assertions.assertTrue(isSorted(mergeSort(randomArray)));
+            System.out.println();
+
+            Assertions.assertTrue(isSorted(quicksort(randomArray)));
         }
     }
     @Test
