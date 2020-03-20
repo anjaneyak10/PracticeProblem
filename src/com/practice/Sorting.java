@@ -1,5 +1,7 @@
 package com.practice;
 
+import java.sql.SQLOutput;
+
 public class Sorting {
     public static int[] sort(int[] ar) {
 
@@ -19,42 +21,28 @@ public class Sorting {
 
     public static boolean isSorted(int ar[]) {
         if (ar.length > 1) {
-
             boolean isAscending = (ar[0] <= ar[(ar.length)-1]);
-
             for (int i = 0; i < ar.length - 1; i++) {
-
                 if (isAscending) {
-
                     if (ar[i] > ar[i + 1]) {
                         return(false);
                     }
-
                 }
                 else {
-
-
                     if (ar[i] < ar[i + 1]) {
                         return(false);
                     }
-
                 }
-
             }
         }
             return true;
-
     }
     public static int[] mergeSort (int ar[]) {
 
         if (ar.length<2)
             return ar;
-//        for (int i=0;i<ar.length;i++)
-//            System.out.println(ar[i]);
         System.out.println();
         mergeSort(ar,0,ar.length-1);
-//        for (int i=0;i<ar.length;i++)
-//        System.out.println(ar[i]);
         return ar;
     }
     private static void mergeSort(int ar[],int f,int l) {
@@ -99,9 +87,40 @@ public class Sorting {
                 ar[k++]=leftar[i++];
             while(j<right)
                 ar[k++]=rightar[j++];
+    }
 
 
 
+    public static int[] quicksort(int []ar ) {
+        if (ar.length<2)
+            return ar;
+        quicksort(ar,0,ar.length-1);
+        for(int i=0;i<ar.length;i++)
+            System.out.println(ar[i]);
+        return ar;
+    }
 
+    private static void quicksort(int[]ar,int l,int r){
+        int j;
+        if(l<r) {
+            j=partition(ar,l,r);
+            quicksort(ar,l,j-1);
+            quicksort(ar,j+1,r);
+        }
+    }
+
+
+    private static int partition(int[]ar,int l ,int r) {
+        int j=l;
+        int i=l;
+        for(int k=l+1;k<r;k++){
+            if(ar[j]>=ar[k]){
+                int temp = ar[j];
+                ar[j]=ar[k];
+                ar[k]=temp;
+                j++;
+            }
+        }
+        return j;
     }
 }

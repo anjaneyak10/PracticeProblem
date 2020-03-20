@@ -21,6 +21,16 @@ public class TestUtil {
     }
 
 
+    public static int getRandomInt(int max,int[] not) {
+        Random rd = new Random();
+        int rnd = rd.nextInt(max);
+        while(SearchAlgos.binarySearch(not,rnd)){
+            return getRandomInt(max,not);
+        }
+        return rnd;
+    }
+
+
     public static int[] sorted(int[] a){
         return IntStream.of(a).sorted().toArray();
     }
