@@ -40,5 +40,4 @@ public class SearchAlgos {
         }
         return false;
     }
-
 }
