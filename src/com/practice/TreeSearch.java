@@ -28,7 +28,7 @@ public class TreeSearch {
         List<Node> children3 = asList(N(19, children7), N(28, children8));
         List<Node> children1 = asList(N(4, children2), N(7, children3), N(9, children4));
         Node root = N(5, children1);
-        //System.out.println(dfs(root,122));
+        System.out.println(dfs(root,122));
         Queue<Node> q= new LinkedList<>();
         q.add(root);
 
